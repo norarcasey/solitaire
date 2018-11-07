@@ -3,13 +3,9 @@ import useDraggable from '../use-draggable';
 import './styles.css';
 
 export function Cards() {
-  let [style, onDragging] = useDraggable();
-
-  console.log('Styles', style);
-  console.log('onDragging', onDragging);
   return (
     <>
-      <Card suit="clubs" displayValue="4" value={4} style={style} onMouseDown={onDragging} />
+      <Card suit="clubs" displayValue="4" value={4} />
       <Card suit="diamonds" displayValue="6" value={6} />
       <Card suit="spades" displayValue="2" value={2} />
       <Card suit="hearts" displayValue="8" value={8} />
@@ -18,6 +14,8 @@ export function Cards() {
 }
 
 export default function Card({ suit, displayValue, value }) {
+  let [style, onDragging] = useDraggable();
+
   let suitUnicodeMap = {
     hearts: '\u2665',
     diamonds: '\u2666',
@@ -34,7 +32,7 @@ export default function Card({ suit, displayValue, value }) {
   };
 
   return (
-    <div className="card" style={{ color: ['diamonds', 'hearts'].includes(suit) ? 'red' : 'black' }}>
+    <div className="card" style={{ color: ['diamonds', 'hearts'].includes(suit) ? 'red' : 'black', ...style }} onMouseDown={onDragging}>
       <div className="left col">
         <div className="display-number">{`${displayValue}`}</div>
       </div>
