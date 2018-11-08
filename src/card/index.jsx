@@ -2,17 +2,6 @@ import React from 'react';
 import useDraggable from '../use-draggable';
 import styles from './styles.module.css';
 
-export function Cards() {
-  return (
-    <>
-      <Card suit="clubs" displayValue="4" value={4} />
-      <Card suit="diamonds" displayValue="6" value={6} />
-      <Card suit="spades" displayValue="2" value={2} />
-      <Card suit="hearts" displayValue="8" value={8} />
-    </>
-  );
-}
-
 export default function Card({ suit, displayValue, value }) {
   let [style, onDragging] = useDraggable();
 
