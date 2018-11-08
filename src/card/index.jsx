@@ -1,6 +1,6 @@
 import React from 'react';
 import useDraggable from '../use-draggable';
-import './styles.css';
+import styles from './styles.module.css';
 
 export function Cards() {
   return (
@@ -31,22 +31,24 @@ export default function Card({ suit, displayValue, value }) {
     }
   };
 
+  let cardColor = ['diamonds', 'hearts'].includes(suit) ? 'red' : 'black';
+
   return (
-    <div className="card" style={{ color: ['diamonds', 'hearts'].includes(suit) ? 'red' : 'black', ...style }} onMouseDown={onDragging}>
-      <div className="left col">
-        <div className="display-number">{`${displayValue}`}</div>
+    <div className={styles.card} style={{ color: cardColor, ...style }} onMouseDown={onDragging}>
+      <div className={styles.left}>
+        <div className={styles['display-number']}>{`${displayValue}`}</div>
       </div>
-      <div className="center col">
+      <div className={styles.center}>
         {Array.from(Array(value), (val, i) => {
           return (
-            <div key={val + suit + i} className="suit" style={{ width: `${suitIconWidth()}%` }}>
+            <div key={val + suit + i} className={styles.suit} style={{ width: `${suitIconWidth()}%` }}>
               {suitUnicodeMap[suit]}
             </div>
           );
         })}
       </div>
-      <div className="right col">
-        <div className="display-number">{`${displayValue}`}</div>
+      <div className={styles.right}>
+        <div className={styles['display-number']}>{`${displayValue}`}</div>
       </div>
     </div>
   );
