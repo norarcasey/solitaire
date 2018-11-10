@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
+import cards from './deck/cards';
 import Deck from './deck';
 import DiscardPile from './discard-pile';
 import './App.css';
 
+/**
+ * Shuffles array in place. ES6 version
+ * @param {Array} a items An array containing the items.
+ */
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 class App extends Component {
   state = {
     discards: [],
-    cards: [
-      { value: 1, displayValue: 'A', suit: 'spades' },
-      { value: 8, displayValue: '8', suit: 'diamonds' },
-      { value: 6, displayValue: '6', suit: 'clubs' },
-      { value: 3, displayValue: '3', suit: 'clubs' },
-      { value: 2, displayValue: '2', suit: 'hearts' }
-    ]
+    cards: shuffle(cards)
   };
 
   handleDiscard = () => {

@@ -28,13 +28,17 @@ export default function Card({ suit, displayValue, value }) {
         <div className={styles['display-number']}>{`${displayValue}`}</div>
       </div>
       <div className={styles.center}>
-        {Array.from(Array(value), (val, i) => {
-          return (
-            <div key={val + suit + i} className={styles.suit} style={{ width: `${suitIconWidth()}%` }}>
-              {suitUnicodeMap[suit]}
-            </div>
-          );
-        })}
+        {value <= 10 ? (
+          Array.from(Array(value), (val, i) => {
+            return (
+              <div key={val + suit + i} className={styles.suit} style={{ width: `${suitIconWidth()}%` }}>
+                {suitUnicodeMap[suit]}
+              </div>
+            );
+          })
+        ) : (
+          <div className={styles['special-card']}>{displayValue}</div>
+        )}
       </div>
       <div className={styles.right}>
         <div className={styles['display-number']}>{`${displayValue}`}</div>

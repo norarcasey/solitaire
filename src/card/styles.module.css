@@ -19,6 +19,7 @@
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
+  overflow: hidden; /* HACK: just hide the extra for now */
 }
 
 .right {
@@ -32,4 +33,9 @@
 
 .suit {
   font-size: 70px;
+}
+
+.special-card {
+  font-size: 300px;
+  text-align: center;
 }
