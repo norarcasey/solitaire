@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  height: 100vh;
+}
+
+.deck-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructions {
+  margin: 35px 0 35px 35px;
+}
+
+.instructions ul {
+  list-style: none;
+}

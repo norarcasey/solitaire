@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import cards from './deck/cards';
 import Deck from './deck';
 import DiscardPile from './discard-pile';
-import './App.css';
+import styles from './App.module.css';
 
 /**
  * Shuffles array in place. ES6 version
@@ -33,9 +33,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Deck cards={this.state.cards} onDiscard={this.handleDiscard} />
-        <DiscardPile cards={this.state.discards} />
+      <div className={styles.app}>
+        <div className={styles.instructions}>
+          <h3>Instructions:</h3>
+          <ul>
+            <li>Click the deck to draw a card(s)</li>
+            <li>Click and drag a drawn card</li>
+            <li>Double click a card to flip it over</li>
+          </ul>
+        </div>
+        <div className={styles['deck-container']}>
+          <Deck cards={this.state.cards} onDiscard={this.handleDiscard} />
+          <DiscardPile cards={this.state.discards} />
+        </div>
       </div>
     );
   }
