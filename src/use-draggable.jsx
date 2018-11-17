@@ -7,11 +7,12 @@ export default function UseDraggable() {
   let [isDragging, setIsDragging] = useState(false);
   let [position, setPosition] = useState({ x: 0, y: 0 });
   let [relativePosition, setRelativePosition] = useState(null);
+  let [zIndex, setZIndex] = useState(0);
 
   let onMouseDown = function(e) {
     if (e.button !== 0) return;
-    // var pos = { x: e.target.offsetLeft, y: e.target.offsetTop };
     setIsDragging(true);
+    setZIndex(1);
     setRelativePosition({
       x: e.pageX - position.x,
       y: e.pageY - position.y
@@ -22,6 +23,7 @@ export default function UseDraggable() {
 
   let onMouseUp = function(e) {
     setIsDragging(false);
+    setZIndex(0);
     e.stopPropagation();
     e.preventDefault();
   };
@@ -51,10 +53,10 @@ export default function UseDraggable() {
 
   return [
     {
-      // position: position.x + position.y === 0 ? 'relative' : 'absolute',
       position: 'absolute',
       left: position.x + 'px',
-      top: position.y + 'px'
+      top: position.y + 'px',
+      zIndex: zIndex
     },
     onMouseDown
   ];
